@@ -1,5 +1,14 @@
 
 .card{
-    background-color: rgb(64, 130, 230);
+    background-color: rgb(114, 164, 240);
     padding: 20px;
+    -webkit-box-shadow: 6px 6px 22px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 22px -2px rgba(0,0,0,0.75);
+    box-shadow: 6px 6px 22px -2px rgba(0,0,0,0.75);
+}
+
+.txtbox{
+    width: 90%;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }

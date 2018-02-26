@@ -1,19 +1,23 @@
+<div class = "container text-center">
+    <input type = "text" class = "txtbox" placeholder="Search by username..."
+              [(ngModel)] = "filterInput"/>
+    <div *ngIf = "filterInput">
+  <h3 style = "color: white; margin-bottom: 20px;">{{filterInput}}</h3>
+</div>  
 
-<div class = "container">
-    <div class="card text-center">
-        <div class="card-block">
-          <h4 class="card-title">UserName</h4>
-          <p class="card-text">Description</p>
-          <a href="#" class="btn btn-success">Details</a>
-        </div>
-    </div>
-    <br>
-    <div class="card text-center">
+<div *ngIf = "filteredUsers && filteredUsers.length; else noUser">
+  <div class = "container" *ngFor = "let user of filteredUsers">
+      <div class="card text-center">
           <div class="card-block">
-            <h4 class="card-title">UserName</h4>
-            <p class="card-text">Description</p>
+            <h4 class="card-title">{{user.name}} {{user.surname}} ({{user.userName}})</h4>
+            <p class="card-text">{{user.description}}</p>
             <a href="#" class="btn btn-success">Details</a>
           </div>
-    </div>
+      </div>
+      <br>
+  </div>
 </div>
 
+<ng-template #noUser>
+  <h2 style = "color: rgb(3, 80, 143)">User does not exist.</h2>
+</ng-template>
