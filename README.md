@@ -1,2 +1,2 @@
 # Angular5-Project
-Angular application for searching registered users.
+Very simple angular application for searching registered users.
