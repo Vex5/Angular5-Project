@@ -5,13 +5,23 @@
   <h3 style = "color: white; margin-bottom: 20px;">{{filterInput}}</h3>
 </div>  
 
+<div class="card text-center" *ngIf = "clicked">
+  <div class="card-block">
+    <h4 class="card-title">USER DETAILS</h4>
+    <p class="card-text">Country: {{country}}</p>
+    <a (click) = 'closeDetails()' href="#" class="btn btn-success">Close</a>
+  </div>
+</div>
+
+<br>
+
 <div *ngIf = "filteredUsers && filteredUsers.length; else noUser">
   <div class = "container" *ngFor = "let user of filteredUsers">
       <div class="card text-center">
           <div class="card-block">
             <h4 class="card-title">{{user.name}} {{user.surname}} ({{user.userName}})</h4>
             <p class="card-text">{{user.description}}</p>
-            <a href="#" class="btn btn-success">Details</a>
+            <a (click) = 'viewDetails(user.userId)' href="#" class="btn btn-success">Details</a>
           </div>
       </div>
       <br>

@@ -14,6 +14,9 @@ export class UserListComponent implements OnInit {
   users: IUser[];
   filteredUsers: IUser[];
   _filterInput: string = "";
+  clicked: boolean = false;
+  country: string = "";
+  prevId: number;
 
   get filterInput(): string{
     return this._filterInput;
@@ -23,7 +26,8 @@ export class UserListComponent implements OnInit {
     this.filteredUsers = this._filterInput ? this.userFilter(this._filterInput) : this.users;
   }
 
-  constructor(private _users: UserService) { }
+  constructor(private _users: UserService) {
+   }
 
   ngOnInit() {
     this.users = this._users.getUsers();
@@ -33,6 +37,23 @@ export class UserListComponent implements OnInit {
   userFilter(filter: string): IUser[]{
     filter = filter.toLocaleLowerCase();
     return this.users.filter((user: IUser) => user.userName.toLocaleLowerCase().indexOf(filter) !== -1);
+  }
+
+  viewDetails(id: number): void{
+    if(this.clicked && this.prevId == id){
+      this.clicked = !this.clicked;
+    }   
+    else this.clicked = true;
+    this.prevId = id;
+    this.country = this.getUserCountry(id);
+  }
+
+  getUserCountry(id: number): string{
+    return this.users.find((user : IUser) => user.userId == id).country;
+  }
+
+  closeDetails(): void{
+    this.clicked = false;
   }
 
 }
